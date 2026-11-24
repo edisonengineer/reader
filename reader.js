@@ -69,6 +69,7 @@
     /* ---------- book ---------- */
     function setBook(data) {
         BOOK = data.book; SUM = data.summaries || {}; CFG = data.config || {};
+        if (!state.endpoint && CFG.endpoint) { state.endpoint = CFG.endpoint; save(); }   // built-in sheet link
         PAGES = [];
         BOOK.sections.forEach((s, si) => s.pages.forEach((p, pi) => {
             s.start = s.start === undefined ? PAGES.length : s.start;
